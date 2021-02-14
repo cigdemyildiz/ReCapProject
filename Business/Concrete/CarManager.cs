@@ -66,10 +66,10 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            if (DateTime.Now.Hour == 11)
+           /* if (DateTime.Now.Hour == 11)
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
-            }
+            } */
 
             return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetails());
         }

@@ -14,10 +14,39 @@ namespace ConsoleUI
 
             //BrandTest();
 
+            // CarTest2();
+
+            //BrandAddition();
+
+            //BrandsListed();
+
+        }
+
+        private static void BrandsListed()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            var result = brandManager.GetAll();
+            foreach (var brand in brandManager.GetAll().Data)
+            {
+                Console.WriteLine(brand.BrandName);
+
+            }
+            Console.WriteLine(result.Message);
+        }
+
+        private static void BrandAddition()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            var result = brandManager.Add(new Brand { BrandId = 5, BrandName = "Opel" });
+            Console.WriteLine(result.Message);
+        }
+
+        private static void CarTest2()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
             var result = carManager.GetCarDetails();
-            if (result.Success==true)
+            if (result.Success == true)
             {
                 foreach (var car in result.Data)
                 {
@@ -28,26 +57,16 @@ namespace ConsoleUI
             {
                 Console.WriteLine(result.Message);
             }
-
-           
-
-
-            //carManager.Add(new Car { BrandId = 1, ColorId = 2, DailyPrice = 100, ModelYear = 2021, Description = "Otomatik Dizel" });
-            //BrandManager brandManager = new BrandManager(new EfBrandDal());
-            //brandManager.Add(new Brand { BrandName = "a" });
-
-
-
         }
 
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.BrandName);
             }
-            Console.WriteLine(brandManager.GetById(1).BrandName);
+            Console.WriteLine(brandManager.GetById(1));
         }
 
         private static void CarTest()
