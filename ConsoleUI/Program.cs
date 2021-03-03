@@ -16,7 +16,7 @@ namespace ConsoleUI
 
             // CarTest2();
 
-            //BrandAddition();
+            BrandAddition();
 
             //BrandsListed();
 
